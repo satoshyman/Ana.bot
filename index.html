@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Cloud Mining</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --primary: #f3ba2f; --bg: #0b0e11; --card: #1e2329; --success: #02c076; }
-        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; direction: rtl; text-align: center; }
-        .container { padding: 20px; padding-bottom: 80px; }
-        .balance-box { background: var(--card); padding: 30px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #333; }
-        #balance { font-size: 3rem; color: var(--primary); font-weight: bold; margin: 10px 0; }
-        
-        /* Mining Button */
-        .mining-section { margin: 40px 0; }
-        .main-btn { 
-            width: 200px; height: 200px; border-radius: 50%; border: none;
-            background: radial-gradient(circle, var(--primary), #d4a017);
-            color: #000; font-size: 1.5rem; font-weight: bold; cursor: pointer;
-            box-shadow: 0 0 30px rgba(243, 186, 47, 0.3); transition: 0.3s;
+import logging
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
+from telegram.ext import Application, CommandHandler, ContextTypes
+
+# إضافة ?v=2 لضمان تحديث الواجهة عند المستخدمين
+WEB_APP_URL = "https://satoshyman.github.io/Ana.bot/?v=2"
+TOKEN = "7951951098:AAH7ETMKV7erxtwTjj_4Y9Rkpcwl42Hsdkg"
+
+logging.basicConfig(level=logging.INFO)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton("⚡ ابدأ التعدين السحابي", web_app=WebAppInfo(url=WEB_APP_URL))]]
+    await update.message.reply_text(
+        "مرحباً بك في Ana Mining PRO ⛏️\n\n"
+        "نظام التعدين السحابي الجديد أصبح جاهزاً.\n"
+        "اضغط أدناه لبدء جلستك (0.0625$ كل 6 ساعات).",
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+def main():
+    print("--- Bot Started with Cache Breaker ---")
+    application = Application.builder().token(TOKEN).build()
+    application.add_handler(CommandHandler("start", start))
+    application.run_polling()
+
+if __name__ == '__main__':
+    main()
