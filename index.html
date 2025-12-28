@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Mining</title>
+    <title>Ana Cloud Mining</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0e11; color: white; text-align: center; font-family: sans-serif; display: flex; flex-direction: column; justify-content: center; height: 100vh; margin: 0; }
-        #balance { font-size: 3.5rem; color: #f3ba2f; margin: 20px; font-weight: bold; }
-        .coin { width: 220px; height: 220px; background: url('https://cdn-icons-png.flaticon.com/512/272/272525.png') center/cover; border-radius: 50%; border: 8px solid #2b2f36; margin: 0 auto; cursor: pointer; transition: 0.1s; }
-        .coin:active { transform: scale(0.9); }
-    </style>
-</head>
-<body>
-    <h1>⛏️ ANA MINING</h1>
-    <div id="balance">$0.0000</div>
-    <div class="coin" onclick="mine()"></div>
-    <script>
-        let balance = 0.0;
-        function mine() {
-            balance += 0.0005;
-            document.getElementById('balance').innerText = '$' + balance.toFixed(4);
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
-            }
-        }
-    </script>
-</body>
-</html>
+        :root { --primary: #f3ba2f; --bg: #0b0e11; --card: #1e2329; --success: #02c076; }
+        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; direction: rtl; text-align: center; }
+        .container { padding: 20px; padding-bottom: 80px; }
+        .balance-box { background: var(--card); padding: 30px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #333; }
+        #balance { font-size: 3rem; color: var(--primary); font-weight: bold; margin: 10px 0; }
+        
+        /* Mining Button */
+        .mining-section { margin: 40px 0; }
+        .main-btn { 
+            width: 200px; height: 200px; border-radius: 50%; border: none;
+            background: radial-gradient(circle, var(--primary), #d4a017);
+            color: #000; font-size: 1.5rem; font-weight: bold; cursor: pointer;
+            box-shadow: 0 0 30px rgba(243, 186, 47, 0.3); transition: 0.3s;
