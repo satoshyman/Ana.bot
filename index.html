@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق التعدين</title>
+    <style>
+        body { background: #0b0e11; color: white; text-align: center; font-family: sans-serif; display: flex; flex-direction: column; justify-content: center; height: 100vh; margin: 0; }
+        #balance { font-size: 3.5rem; color: #f3ba2f; margin: 20px 0; font-weight: bold; }
+        .coin { width: 220px; height: 220px; background: url('https://cdn-icons-png.flaticon.com/512/272/272525.png') center/cover; border-radius: 50%; border: 8px solid #2b2f36; margin: 0 auto; cursor: pointer; transition: 0.1s; }
+        .coin:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+    <h1>⛏️ DOLLAR MINER</h1>
+    <div id="balance">$0.0000</div>
+    <div class="coin" onclick="mine()"></div>
+    <p>اضغط للربح</p>
+    <script>
+        let balance = 0.0;
+        function mine() {
+            balance += 0.0005;
+            document.getElementById('balance').innerText = '$' + balance.toFixed(4);
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+            }
+        }
+    </script>
+</body>
+</html>
