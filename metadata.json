@@ -1,0 +1,5 @@
+{
+  "name": "TON Cloud Mining Simulator",
+  "description": "A Telegram-style web app for simulated cloud mining, earning TON rewards through sessions and tasks.",
+  "requestFramePermissions": []
+}
